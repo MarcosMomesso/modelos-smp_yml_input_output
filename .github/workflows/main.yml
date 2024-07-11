@@ -21,10 +21,10 @@ on:
                 type: choice
                 required: true
                 description: "Ambiente para deploy"
-                    options:
-                      - Desenvolvimento
-                      - Homologação
-                      - Produção
+                options:
+                  - Desenvolvimento
+                  - Homologação
+                  - Produção
 Jobs:
     valores-_input:
         runs-on: ubuntu-latest
