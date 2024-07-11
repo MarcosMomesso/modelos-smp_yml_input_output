@@ -25,12 +25,12 @@ on:
           - Desenvolvimento
           - Homologação
           - Produção
-Jobs:
+jobs:
   valores_input:
     runs-on: ubuntu-latest
     steps:
       - name: Exibindo o contexto de input completo
-        run: echo "${{tojson(inputs)}}"
+        run: echo "${{toJson(inputs)}}"
       - name: Exibindo os valores Individualmente
         run: |
           echo "Esses são os valores passados nos inputs"
