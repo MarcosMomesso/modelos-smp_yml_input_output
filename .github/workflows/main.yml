@@ -1,1 +1,41 @@
 
+name: Exemplo Input
+run-name: Exemplo workflow para input, executado por {{ github.actor }}
+on:
+    workflow_dispatch:
+        inputs:
+            versao:
+                type: string
+                required: true
+                default: "dev"
+                description: "versão da nova release"
+            numero_issue:
+                type: number
+                required: true
+                description: "Número da issue referente ao commit"
+            intencao_deploy:
+                type: boolean
+                required: true
+                description: "Especificar intenção de execução de deploy"
+            ambiente:
+                type: choice
+                required: true
+                description: "Ambiente para deploy"
+                    options:
+                      - Desenvolvimento
+                      - Homologação
+                      - Produção
+Jobs:
+    valores-_input:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Exibindo o contexto de input completo
+              run: echo "${{tojson(inputs)}}"
+            - name: "Exibindo os valores Individualmente"
+              run: |
+                echo "Esses são os valores passados nos inputs"
+                echo "Identificação de versão: ${{inputs.versao}}"
+                echo "Issue relacionada: ${{inputs.numero_issue}}"
+                echo "Intenção para execução de deploy: ${{inputs.intencao_deploy}}"
+                echo "Ambiente selecionado: ${{inputs.ambiente}}"
+            
